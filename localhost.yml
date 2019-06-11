@@ -18,10 +18,14 @@
       - name: go
       - name: yarn
       - name: ndenv
+      - name: tree
 
     homebrew_cask_packages:
-      # - name: google-chrome
-      # - name: docker
+      - name: google-chrome
+      - name: docker
+      - name: evernote
+      - name: simplenote
+      - name: slack
 
   tasks:
     - name: homebrew update
@@ -30,7 +34,7 @@
 
     - name: homebrew tap
       homebrew_tap:
-        name: "{{ item }}"
+        tap: "{{ item }}"
         state: present
       with_items: "{{ homebrew_taps }}"
 
@@ -40,10 +44,13 @@
         state: "{{ item.state | default('present') }}"
       with_items: "{{ homebrew_packages }}"
 
-    # - name: homebrew cask packages install
-    #   homebrew_cask:
-    #     name: "{{ item.name }}"
-    #     state: "{{ item.state | default('present') }}"
-    #   environment:
-    #     HOMEBREW_CASK_OPTS: "--appdir=/Applications"
-    #   with_items: "{{ homebrew_cask_packages }}"
+    - name: update brew-cask
+      homebrew: name=brew-cask state=latest
+
+    - name: homebrew cask packages install
+      homebrew_cask:
+        name: "{{ item.name }}"
+        state: present
+      environment:
+        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+      with_items: "{{ homebrew_cask_packages }}"
