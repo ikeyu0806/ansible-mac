@@ -19,7 +19,7 @@
       - name: yarn
       - name: ndenv
       - name: tree
-
+      - name: starship
     homebrew_cask_packages:
       - name: google-chrome
       - name: docker
