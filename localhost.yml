@@ -2,9 +2,6 @@
   connection: local
 
   vars:
-    homebrew_taps:
-      - caskroom/cask
-
     homebrew_packages:
       - name: ansible
       - name: tmux
@@ -32,25 +29,8 @@
       homebrew:
         update_homebrew: yes
 
-    - name: homebrew tap
-      homebrew_tap:
-        tap: "{{ item }}"
-        state: present
-      with_items: "{{ homebrew_taps }}"
-
     - name: homebrew packages install
       homebrew:
         name: "{{ item.name }}"
         state: "{{ item.state | default('present') }}"
       with_items: "{{ homebrew_packages }}"
-
-    - name: update brew-cask
-      homebrew: name=brew-cask state=latest
-
-    - name: homebrew cask packages install
-      homebrew_cask:
-        name: "{{ item.name }}"
-        state: present
-      environment:
-        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
-      with_items: "{{ homebrew_cask_packages }}"
