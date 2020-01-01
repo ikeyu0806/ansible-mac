@@ -19,8 +19,6 @@
       - name: starship
     homebrew_cask_packages:
       - name: google-chrome
-      - name: docker
-      - name: evernote
       - name: simplenote
       - name: slack
 
@@ -34,3 +32,11 @@
         name: "{{ item.name }}"
         state: "{{ item.state | default('present') }}"
       with_items: "{{ homebrew_packages }}"
+
+    - name: homebrew cask packages install
+      homebrew_cask:
+        name: "{{ item.name }}"
+        state: present
+      environment:
+        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+      with_items: "{{ homebrew_cask_packages }}"
