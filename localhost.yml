@@ -40,3 +40,6 @@
       environment:
         HOMEBREW_CASK_OPTS: "--appdir=/Applications"
       with_items: "{{ homebrew_cask_packages }}"
+
+    - name: install ndenv plugin
+      shell: git clone https://github.com/riywo/node-build.git $(ndenv root)/plugins/node-build
