@@ -17,6 +17,7 @@
       - name: ndenv
       - name: tree
       - name: starship
+      - name: bat
     homebrew_cask_packages:
       - name: google-chrome
       - name: simplenote
