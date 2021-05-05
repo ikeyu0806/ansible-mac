@@ -21,12 +21,12 @@
       - name: watch
       - name: direnv
       - name: anyenv
-      - name: anyenvupdate
+      # - name: anyenvupdate
       - name: goenv
       - name: pyenv
       - name: aws-cli
       - name: aws-sam-cli
-      - name: saw
+      - name: jsawk
       - name: dep
       - name: gig
     homebrew_cask_packages:
