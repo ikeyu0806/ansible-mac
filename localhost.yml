@@ -29,6 +29,7 @@
       - name: jsawk
       - name: dep
       - name: gig
+      - name: jump
     homebrew_cask_packages:
       - name: google-chrome
       - name: simplenote
