@@ -30,6 +30,7 @@
       - name: dep
       - name: gig
       - name: jump
+      - name: tig
     homebrew_cask_packages:
       - name: google-chrome
       - name: simplenote
